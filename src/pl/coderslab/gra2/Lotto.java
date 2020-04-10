@@ -8,15 +8,17 @@ public class Lotto {
     public static void main(String[] args) {
 
         int []randomNumbers=getRandomNumbers();
-
         System.out.println("Random numbers" + Arrays.toString(randomNumbers));
 
         int []yourNumbers=getYourNumbers();
-
         System.out.println("Your numbers:" + Arrays.toString(yourNumbers));
-        //getYourNumbers();
 
-        System.out.println("trafiles "+compareNumbers(randomNumbers, yourNumbers)+" liczby !!!\n GRATULACJE");
+        if(compareNumbers(randomNumbers, yourNumbers)>3){
+            System.out.println("You matched "+compareNumbers(randomNumbers, yourNumbers)+" numbers correctly !!!\n CONGRATULATIONS !!!");
+        }else{
+            System.out.println("you should get a descent job , lotteries are for lazy fools");
+        }
+
 
     }
 
@@ -29,6 +31,19 @@ public class Lotto {
 
         for (int i = 0; i <= luckyNumbers.length-1; i++) {
             luckyNumbers[i]=r.nextInt(48)+1;
+
+            for (int j = 0; j < i-1; j++) {
+
+                if(luckyNumbers[i]==luckyNumbers[j]){
+
+
+                    //System.out.println(luckyNumbers[i]+" "+luckyNumbers[i]);
+                    //System.out.println("powtorzyly sie");
+                    i--;
+                }
+
+            }
+
             //System.out.println(luckyNumbers[i]);
         }
 
@@ -84,7 +99,7 @@ public class Lotto {
                 if(a[i]==b[j]){
                     counter++;
 
-                    System.out.println("trafiles "+a[i]);
+                    //System.out.println("trafiles liczbe "+a[i]);
 
                 }
             }
